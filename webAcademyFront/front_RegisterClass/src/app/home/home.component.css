@@ -1,0 +1,30 @@
+mat-card{
+    margin: 20px auto; 
+    padding: 20px; 
+    width: 400px;
+}
+.example-form{
+    max-width: 400px; 
+    margin: 0 auto; 
+    padding: 20px; 
+  }
+  
+  
+  .example-full-width {
+    width: 100%; 
+    margin-bottom: 20px; 
+  }
+  
+  
+  button {
+    width: 100%; 
+    margin-bottom: 10px; 
+    background: #ff9d1c ;
+  }
+  
+  
+  span {
+    display: block; 
+    text-align: center; 
+  }
+  

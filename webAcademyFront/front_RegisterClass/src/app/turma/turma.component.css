@@ -1,0 +1,47 @@
+mat-card{
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+/* Estilo para os formulários */
+form {
+  margin-bottom: 20px;
+}
+
+/* Estilo para os botões */
+button {
+  margin-right: 10px;
+}
+
+/* Estilo para a tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Estilo para as células da tabela */
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Estilo para o cabeçalho da tabela */
+th {
+  background-color: #f2f2f2;
+}
+
+/* Estilo para as linhas pares da tabela */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Estilo para os inputs do Angular Material */
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Estilo para os botões do Angular Material */
+.mat-raised-button {
+  margin-right: 10px;
+}

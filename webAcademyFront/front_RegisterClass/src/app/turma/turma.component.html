@@ -1,0 +1,72 @@
+<mat-card>
+  <h2>Cadastrar/Editar Turma</h2>
+  <form *ngIf="!turmaSelecionada" (submit)="cadastrarTurma()">
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput type="text" [(ngModel)]="novaTurma.Nome" name="Nome" required>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <mat-label>Materia:</mat-label>
+      <mat-select [(ngModel)]="novaTurma.ID_Materia" name="ID_Materia" required>
+        <mat-option *ngFor="let materia of materias" [value]="materia.ID_Materia">{{ materia.Nome }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <mat-label>Docente:</mat-label>
+      <mat-select [(ngModel)]="novaTurma.fk_Docente_Matricula" name="fk_Docente_Matricula">
+        <mat-option *ngFor="let docente of docentes" [value]="docente.Matricula">{{ docente.Nome }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <button mat-raised-button type="submit" >Cadastrar</button>
+  </form>
+  <form *ngIf="turmaSelecionada" (submit)="confirmarEdicao()">
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput type="text" [(ngModel)]="turmaSelecionada.Nome" name="Nome" required>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <mat-label>Materia:</mat-label>
+      <mat-select [(ngModel)]="turmaSelecionada.ID_Materia" name="ID_Materia" required>
+        <mat-option *ngFor="let materia of materias" [value]="materia.ID_Materia">{{ materia.Nome }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <mat-label>Docente:</mat-label>
+      <mat-select [(ngModel)]="turmaSelecionada.fk_Docente_Matricula" name="fk_Docente_Matricula">
+        <mat-option *ngFor="let docente of docentes" [value]="docente.Matricula">{{ docente.Nome }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <button mat-raised-button type="button" (click)="cancelarEdicao()">Cancelar</button>
+    <button mat-raised-button type="submit">Confirmar</button>
+  </form>
+</mat-card>
+<div>
+  <h2>Lista de Turmas</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Materia</th>
+        <th>Docente</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turma of turmas">
+        <td>{{ turma.Nome }}</td>
+        <td>{{ turma.NomeMateria }}</td>
+        <td>{{ turma.NomeDocente }}</td>
+        <td>
+          <button (click)="alterarTurma(turma)">Alterar</button>
+          <button (click)="deletarTurma(turma.ID_Turma)">Deletar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
