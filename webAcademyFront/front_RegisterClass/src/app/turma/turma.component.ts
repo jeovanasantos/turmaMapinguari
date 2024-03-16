@@ -11,6 +11,8 @@ import { TurmaService } from '../services/turma.service';
 import { CommonModule } from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTableModule} from '@angular/material/table';
+
 
 @Component({
   selector: 'app-turma',
@@ -27,7 +29,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     HttpClientModule,
     CommonModule,
    MatSelectModule,
-  MatSidenavModule]
+   MatSidenavModule,
+   MatTableModule,
+
+  ]
 })
 export class TurmaComponent implements OnInit {
 
@@ -43,6 +48,8 @@ export class TurmaComponent implements OnInit {
     this.carregarTurmas();
     this.carregarDocentes();
     this.carregarMaterias();
+    
+  
   }
 
   carregarTurmas(): void {
@@ -50,6 +57,8 @@ export class TurmaComponent implements OnInit {
       this.turmas = turmas;
       this.carregarNomesMateriaDocente();
     });
+
+    this.turmas.push(...this.turmas);  
   }
 
   carregarDocentes(): void {
@@ -69,27 +78,18 @@ export class TurmaComponent implements OnInit {
       this.turmaService.getNomeMateria(turma.ID_Materia).subscribe(nomeMateria => {
         turma.NomeMateria = nomeMateria.Nome;
       });
-      this.turmaService.getNomeDocente(turma.fk_Docente_Matricula).subscribe(nomeDocente => {
+      this.turmaService.getNomeDocente(turma.Matricula_Docente).subscribe(nomeDocente => {
         turma.NomeDocente = nomeDocente.Nome;
       });
     }
   }
 
-  carregarDocente(): void {
-    for (const turma of this.turmas) {
-      this.turmaService.getNomeMateria(turma.ID_Materia).subscribe(nomeMateria => {
-        turma.NomeMateria = nomeMateria.Nome;
-      });
-      this.turmaService.getNomeDocente(turma.fk_Docente_Matricula).subscribe(nomeDocente => {
-        turma.NomeDocente = nomeDocente.Nome;
-      });
-    }
-  }
   cadastrarTurma(): void {
     this.turmaService.cadastrarTurma(this.novaTurma).subscribe(() => {
       this.carregarTurmas();
       this.novaTurma = {};
     });
+    
   }
 
   alterarTurma(turma: any): void {

@@ -14,6 +14,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { TurmaComponent } from './turma/turma.component';
 import { TurmaService } from './services/turma.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatriculaTurmaService } from './services/matricula-turma.service';
+import { MateriaService } from './services/materia.service';
+import { CursoService } from './services/curso.service';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 
 
@@ -22,10 +26,15 @@ import { HttpClientModule } from '@angular/common/http';
         AppComponent,
         DashboardComponent,
         AppComponent,
+        InicioComponent,
      
         
   ],
-    providers: [TurmaService],
+    providers: [TurmaService, 
+                MatriculaTurmaService, 
+                MateriaService, 
+                CursoService],
+                
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
